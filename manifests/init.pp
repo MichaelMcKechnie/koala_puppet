@@ -24,4 +24,14 @@ class koala {
     ensure => directory,
     mode => '0700',
   }
+
+  cron { 'Koala pull':
+    command => 'cd ~/Koala && git pull >> ~/git.log 2>&1',
+    minute => '*/5',
+  }  
+
+  cron { 'Puppet apply':
+    command => 'cd ~ && puppet apply Koala >> ~/puppet.log 2>&1',
+    minute => '*/5',
+  }  
 }
