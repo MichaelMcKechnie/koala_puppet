@@ -11,8 +11,13 @@
 # Sample Usage:
 #
 class koala {
-  package { 'git':
-    ensure => installed,
+  package { ['git', 'docker']:
+    ensure => present,
+  }
+  
+  service { 'docker':
+    ensure => running,
+    enable => true,
   }
   
   file { '~/.ssh':
