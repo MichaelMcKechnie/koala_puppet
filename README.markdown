@@ -1,3 +1,0 @@
-# unnamed #
-
-This is the Koala module. It provides...
