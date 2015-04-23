@@ -11,5 +11,12 @@
 # Sample Usage:
 #
 class koala {
-
+  package { 'git':
+    ensure => installed,
+  }
+  
+  file { '~/.ssh':
+    ensure => directory,
+    mode => '0700',
+  }
 }
