@@ -11,11 +11,11 @@
 # Sample Usage:
 #
 class koala {
-  package { ['git', 'docker']:
+  package { ['git', 'puppet']:
     ensure => present,
   }
   
-  service { 'docker':
+  service { 'puppet':
     ensure => running,
     enable => true,
   }
@@ -25,13 +25,13 @@ class koala {
     mode => '0700',
   }
 
-  cron { 'Koala pull':
-    command => 'cd ~/Koala && git pull >> ~/git.log 2>&1',
+  cron { 'koala pull':
+    command => 'cd ~/koala && git pull 2>&1 | logger -t "koala pull"',
     minute => '*/5',
   }  
 
   cron { 'Puppet apply':
-    command => 'cd ~ && puppet apply Koala >> ~/puppet.log 2>&1',
+    command => 'cd ~ && puppet apply koala 2>&1 | logger -t "puppet apply"',
     minute => '*/5',
   }  
 }
