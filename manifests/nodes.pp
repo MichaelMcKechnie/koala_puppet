@@ -1,1 +1,5 @@
-require koala
+node 'koala' {
+	class {
+		koala
+	}
+}
